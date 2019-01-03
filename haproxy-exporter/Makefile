@@ -1,11 +1,7 @@
 #Inspired from : https://github.com/littlemanco/boilr-makefile/blob/master/template/Makefile, https://github.com/geetarista/go-boilerplate/blob/master/Makefile, https://github.com/nascii/go-boilerplate/blob/master/GNUmakefile https://github.com/cloudflare/hellogopher/blob/master/Makefile
 
-APP_NAME=node-exporter
-APP_USERREPO=github.com/lukics
-APP_PACKAGE=$(APP_USERREPO)/$(APP_NAME)
-
 PLUGIN_USER ?= lukics
-PLUGIN_NAME ?= node-exporter
+PLUGIN_NAME ?= haproxy-exporter
 PLUGIN_TAG ?= armv7
 PLUGIN_IMAGE ?= $(PLUGIN_USER)/$(PLUGIN_NAME):$(PLUGIN_TAG)
 
