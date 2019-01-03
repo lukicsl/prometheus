@@ -3,22 +3,17 @@ MAINTAINER "Slavisa Lukic" <slavisa.lukic@gmail.com>
 
 RUN apt-get update && apt-get install -qy curl ca-certificates
 WORKDIR /root/
-RUN mkdir /root/alertmanager
+RUN mkdir /root/node-exporter
 
-RUN curl -sSLO https://github.com/prometheus/alertmanager/releases/download/v0.16.0-alpha.0/alertmanager-0.16.0-alpha.0.linux-armv7.tar.gz && \
-   tar -xvf alertmanager-0.16.0-alpha.0.linux-armv7.tar.gz -C /root/alertmanager/ --strip-components=1 && \
-   rm alertmanager-0.16.0-alpha.0.linux-armv7.tar.gz
+RUN curl -sSLO https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-armv7.tar.gz && \
+   tar -xvf v0.17.0/node_exporter-0.17.0.linux-armv7.tar.gz -C /root/node-exporter/ --strip-components=1 && \
+   rm v0.17.0/node_exporter-0.17.0.linux-armv7.tar.gz
 
-workdir /root/alertmanager
+FROM        quay.io/prometheus/busybox:glibc
+LABEL maintainer="The Prometheus Authors <prometheus-developers@googlegroups.com>"
 
-RUN mkdir -p /etc/alertmanager
-RUN mv ./alertmanager /usr/bin/
-RUN mv ./amtool /usr/bin/
-RUN mv ./alertmanager.yml /etc/alertmanager
+COPY --from=0 /root/node-exporter/node_exporter /bin/node_exporter
 
-EXPOSE 9093
-VOLUME [ "/alertmanager" ]
-WORKDIR /alertmanager
-ENTRYPOINT [ "/usr/bin/alertmanager" ]
-CMD        [ "--config.file=/etc/alertmanager/alertmanager.yml", \
-             "--storage.path=/alertmanager" ]
+EXPOSE      9100
+USER        nobody
+ENTRYPOINT  [ "/bin/node_exporter" ]
