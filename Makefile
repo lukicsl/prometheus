@@ -5,12 +5,12 @@ NO_COLOR=\033[0m
 OK_COLOR=\033[32;01m
 WARN_COLOR=\033[33;01m
 
-all:prometheus alertmanager
+all: prometheus-all alertmanager-all
 
-prometheus:
+prometheus-all:
 	@echo -e "$(OK_COLOR)==> Docker build/push image : prometheus $(NO_COLOR)"
 	cd $(PWD)/prometheus ;	make all
 
-alertmanager:
+alertmanager-all:
 	@echo -e "$(OK_COLOR)==> build/push plugin : alertmanager$(NO_COLOR)"
 	cd $(PWD)/alertmanager;	make all
