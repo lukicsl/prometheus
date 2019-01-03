@@ -5,10 +5,10 @@ all: prometheus alertmanager
 
 prometheus:
 	@echo -e "$(OK_COLOR)==> Docker build/push image : prometheus $(NO_COLOR)"
-  cd $(PWD)/prometheus
+	cd $(PWD)/prometheus
 	make all
 
 alertmanager:
 	@echo -e "$(OK_COLOR)==> build/push plugin : alertmanager$(NO_COLOR)"
-  cd $(PWD)/alertmanager
+	cd $(PWD)/alertmanager
 	make all
