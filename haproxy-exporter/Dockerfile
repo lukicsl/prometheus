@@ -10,7 +10,7 @@ RUN curl -sSLO https://github.com/prometheus/haproxy_exporter/releases/download/
    rm haproxy_exporter-0.9.0.linux-armv7.tar.gz
 
 FROM        arm32v6/alpine:latest
-LABEL "Slavisa Lukic" <slavisa.lukic@gmail.com>"
+LABEL "Slavisa Lukic" <slavisa.lukic@gmail.com>
 
 COPY --from=0 /root/haproxy-exporter/haproxy_exporter /bin/haproxy_exporter
 
