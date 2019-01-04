@@ -9,8 +9,8 @@ RUN curl -sSLO https://github.com/prometheus/node_exporter/releases/download/v0.
    tar -xvf node_exporter-0.17.0.linux-armv7.tar.gz -C /root/node-exporter/ --strip-components=1 && \
    rm node_exporter-0.17.0.linux-armv7.tar.gz
 
-FROM        quay.io/prometheus/busybox:glibc
-LABEL maintainer="The Prometheus Authors <prometheus-developers@googlegroups.com>"
+FROM        arm32v6/alpine:latest
+LABEL "Slavisa Lukic" <slavisa.lukic@gmail.com>"
 
 COPY --from=0 /root/node-exporter/node_exporter /bin/node_exporter
 
