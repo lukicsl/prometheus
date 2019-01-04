@@ -10,7 +10,7 @@ RUN curl -sSLO https://github.com/prometheus/node_exporter/releases/download/v0.
    rm node_exporter-0.17.0.linux-armv7.tar.gz
 
 FROM        arm32v6/alpine:latest
-LABEL "Slavisa Lukic" <slavisa.lukic@gmail.com>"
+LABEL "Slavisa Lukic" <slavisa.lukic@gmail.com>
 
 COPY --from=0 /root/node-exporter/node_exporter /bin/node_exporter
 
