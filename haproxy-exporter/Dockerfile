@@ -1,5 +1,5 @@
 FROM arm32v7/ubuntu
-MAINTAINER "Slavisa Lukic" <slavisa.lukic@gmail.com>"
+MAINTAINER "Slavisa Lukic" <slavisa.lukic@gmail.com>
 
 RUN apt-get update && apt-get install -qy curl ca-certificates
 WORKDIR /root/
