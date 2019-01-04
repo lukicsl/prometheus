@@ -2,7 +2,7 @@
 
 PLUGIN_USER ?= lukics
 PLUGIN_NAME ?= haproxy-exporter
-PLUGIN_TAG ?= armv7
+PLUGIN_TAG ?= linux-arm32v7-latest
 PLUGIN_IMAGE ?= $(PLUGIN_USER)/$(PLUGIN_NAME):$(PLUGIN_TAG)
 
 ERROR_COLOR=\033[31;01m
